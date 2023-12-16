@@ -1,14 +1,16 @@
-package Application;
+package employees.portal.service;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import org.springframework.jdbc.core.RowMapper;
 
-public class EmployeeRowMapper implements RowMapper<ZempModel> {
+import employees.portal.model.EmployeeModel;
 
-	public ZempModel mapRow(ResultSet rs, int rowNum) throws SQLException {
-		ZempModel employee = new ZempModel();
+public class EmployeeRowMapper implements RowMapper<EmployeeModel> {
+
+	public EmployeeModel mapRow(ResultSet rs, int rowNum) throws SQLException {
+		EmployeeModel employee = new EmployeeModel();
 		employee.setEmpid(rs.getInt("ID"));
 		employee.setName(rs.getString("NAME"));
 		employee.setAge(rs.getInt("AGE"));

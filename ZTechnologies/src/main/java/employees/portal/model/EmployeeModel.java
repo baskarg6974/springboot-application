@@ -1,4 +1,4 @@
-package Application;
+package employees.portal.model;
 
 import java.io.Serializable;
 
@@ -8,7 +8,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-
 import javax.persistence.Table;
 
 import org.springframework.stereotype.Component;
@@ -18,7 +17,7 @@ import io.swagger.annotations.ApiModelProperty;
 @Table(name = "emp")
 @Entity
 @Component
-public class ZempModel implements Serializable {
+public class EmployeeModel implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int empid;
@@ -35,17 +34,17 @@ public class ZempModel implements Serializable {
 
 	@ManyToOne(optional = false)
 	@JoinColumn(name = "deptno", referencedColumnName = "deptno", insertable = false, updatable = false)
-	private ZdeptModel deptmodel;
+	private DepartmentModel deptmodel;
 
-	public ZdeptModel getDeptmodel() {
+	public DepartmentModel getDeptmodel() {
 		return deptmodel;
 	}
 
-	public void setDeptmodel(ZdeptModel deptmodel) {
+	public void setDeptmodel(DepartmentModel deptmodel) {
 		this.deptmodel = deptmodel;
 	}
 
-	public ZempModel() {
+	public EmployeeModel() {
 	}
 
 	public int getEmpid() {
@@ -96,7 +95,7 @@ public class ZempModel implements Serializable {
 		this.email = email;
 	}
 
-	public ZempModel(int empid, String name, int age, int deptno, int yearjoined, String email, ZdeptModel deptmodel) {
+	public EmployeeModel(int empid, String name, int age, int deptno, int yearjoined, String email, DepartmentModel deptmodel) {
 		super();
 		this.empid = empid;
 		this.name = name;

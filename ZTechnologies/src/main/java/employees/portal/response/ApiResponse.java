@@ -1,4 +1,4 @@
-package Application;
+package employees.portal.response;
 
 import org.springframework.stereotype.Component;
 

@@ -1,11 +1,11 @@
-package Application;
+package employees.portal.model;
 
 import java.util.List;
 
 import org.springframework.stereotype.Component;
 
 @Component
-public class ZdeptDto {
+public class DepartmentDto {
 	private int deptno;
 	private String deptname;
 	private String deptloc;
@@ -18,13 +18,13 @@ public class ZdeptDto {
 		this.deptloc = deptloc;
 	}
 
-	private List<ZempModel> empmodel;
+	private List<EmployeeModel> empmodel;
 
-	public List<ZempModel> getEmpmodel() {
+	public List<EmployeeModel> getEmpmodel() {
 		return empmodel;
 	}
 
-	public void setEmpmodel(List<ZempModel> empmodel) {
+	public void setEmpmodel(List<EmployeeModel> empmodel) {
 		this.empmodel = empmodel;
 	}
 
@@ -44,11 +44,11 @@ public class ZdeptDto {
 		this.deptname = deptname;
 	}
 
-	public ZdeptDto() {
+	public DepartmentDto() {
 
 	}
 
-	public ZdeptDto(int deptno, String deptname, List<ZempModel> empmodel) {
+	public DepartmentDto(int deptno, String deptname, List<EmployeeModel> empmodel) {
 		super();
 		this.deptno = deptno;
 		this.deptname = deptname;

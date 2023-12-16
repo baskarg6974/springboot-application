@@ -1,4 +1,4 @@
-package Application;
+package employees.portal.Impl;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,38 +8,47 @@ import org.springframework.beans.factory.annotation.Qualifier;
 
 import org.springframework.stereotype.Component;
 
+import employees.portal.model.EmployeeDto;
+import employees.portal.model.EmployeeModel;
+import employees.portal.response.ApiResponse;
+import employees.portal.response.Exception;
+import employees.portal.response.RequestValidation;
+import employees.portal.response.SuccessApiResponse;
+import employees.portal.service.EmployeeRepository;
+import employees.portal.model.ErrorResponse;
+
 import java.util.stream.Collectors;
 
 @Component("empservice")
-public class ZempService {
+public class EmployeeService {
 	@Autowired
 	@Qualifier("emprepo")
-	ZempRepository emprepo;
+	EmployeeRepository emprepo;
 
 	@Autowired
-	Error Error;
+	ErrorResponse Error;
 
 	@Autowired
 	RequestValidation reqvalidation;
 
 	@Autowired
-	BadException Badexception;
+	Exception Badexception;
 
 	@Autowired
 	ApiResponse ApiResponse;
 
-	List<ZempDto> empdtolist = new ArrayList<>();
+	List<EmployeeDto> empdtolist = new ArrayList<>();
 
-	public ZempModel getemp(int empid) {
+	public EmployeeModel getemp(int empid) {
 		return emprepo.findById(empid);
 	}
 
-	public Object saveemp(ZempModel empmodel) {
+	public Object saveemp(EmployeeModel empmodel) {
 
-		List<Error> errorlist = reqvalidation.validatetherequest(empmodel);
+		List<ErrorResponse> errorlist = reqvalidation.validatetherequest(empmodel);
 		if (errorlist.size() > 0) {
 
-			throw new BadException("Bad request", errorlist);
+			throw new Exception("Bad request", errorlist);
 
 		}
 
@@ -58,12 +67,12 @@ public class ZempService {
 
 	}
 
-	public List<ZempModel> getallemp() {
+	public List<EmployeeModel> getallemp() {
 		return emprepo.findAll();
 	}
 
-	public ZempModel putemp(int empid, ZempModel empmodeldetails) {
-		ZempModel empmodel = emprepo.findById(empid);
+	public EmployeeModel putemp(int empid, EmployeeModel empmodeldetails) {
+		EmployeeModel empmodel = emprepo.findById(empid);
 
 		empmodel.setName(empmodeldetails.getName());
 		empmodel.setAge(empmodeldetails.getAge());
@@ -74,9 +83,9 @@ public class ZempService {
 
 	}
 
-	public ZempDto getempbydto(ZempModel empmodel) {
+	public EmployeeDto getempbydto(EmployeeModel empmodel) {
 
-		ZempDto empdto = new ZempDto();
+		EmployeeDto empdto = new EmployeeDto();
 		empdto.setEmpid(empmodel.getEmpid());
 		empdto.setName(empmodel.getName());
 		empdto.setDeptno(empmodel.getDeptno());
@@ -85,7 +94,7 @@ public class ZempService {
 		return empdto;
 	}
 
-	public List<ZempDto> getallempdto() {
+	public List<EmployeeDto> getallempdto() {
 		return emprepo.findAll().stream().map(this::getempbydto).collect(Collectors.toList());
 
 	}

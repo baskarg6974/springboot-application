@@ -1,9 +1,9 @@
-package Application;
+package employees.portal.model;
 
 import org.springframework.stereotype.Component;
 
 @Component
-public class ZempDto {
+public class EmployeeDto {
 
 	private int empid;
 	private String name;
@@ -51,11 +51,11 @@ public class ZempDto {
 		this.deptno = deptno;
 	}
 
-	public ZempDto() {
+	public EmployeeDto() {
 
 	}
 
-	public ZempDto(int empid, String name, int deptno, String deptname, String deptloc) {
+	public EmployeeDto(int empid, String name, int deptno, String deptname, String deptloc) {
 
 		super();
 

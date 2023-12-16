@@ -1,4 +1,4 @@
-package Application;
+package employees.portal.model;
 
 import java.util.List;
 
@@ -16,7 +16,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "dept")
-public class ZdeptModel {
+public class DepartmentModel {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int deptno;
@@ -28,17 +28,17 @@ public class ZdeptModel {
 
 	@JsonIgnore
 	@OneToMany(mappedBy = "deptmodel", cascade = CascadeType.ALL)
-	private List<ZempModel> empmodel;
+	private List<EmployeeModel> empmodel;
 
-	public List<ZempModel> getEmpmodel() {
+	public List<EmployeeModel> getEmpmodel() {
 		return empmodel;
 	}
 
-	public void setEmpmodel(List<ZempModel> empmodel) {
+	public void setEmpmodel(List<EmployeeModel> empmodel) {
 		this.empmodel = empmodel;
 	}
 
-	public ZdeptModel() {
+	public DepartmentModel() {
 
 	}
 
@@ -82,8 +82,8 @@ public class ZdeptModel {
 		this.managerid = managerid;
 	}
 
-	public ZdeptModel(int deptno, String deptname, String deptloc, @Size(min = 1, max = 30) String deptmanager,
-			int managerid, List<ZempModel> empmodel) {
+	public DepartmentModel(int deptno, String deptname, String deptloc, @Size(min = 1, max = 30) String deptmanager,
+			int managerid, List<EmployeeModel> empmodel) {
 		super();
 		this.deptno = deptno;
 		this.deptname = deptname;

@@ -1,9 +1,10 @@
-package Application;
+
+package employees.portal.model;
 
 import org.springframework.stereotype.Component;
 
 @Component
-public class Error {
+public class ErrorResponse {
 	private String field;
 	private String message;
 
@@ -23,13 +24,13 @@ public class Error {
 		this.message = message;
 	}
 
-	public Error(String field, String message) {
+	public ErrorResponse(String field, String message) {
 		super();
 		this.field = field;
 		this.message = message;
 	}
 
-	public Error() {
+	public ErrorResponse() {
 
 	}
 

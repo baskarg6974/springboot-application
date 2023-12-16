@@ -1,4 +1,4 @@
-package Application;
+package employees.portal.response;
 
 public class SuccessApiResponse {
 	private int status;

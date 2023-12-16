@@ -1,4 +1,4 @@
-package Application;
+package employees.portal.response;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 public class GlobalExceptionHandler {
 
 	@ExceptionHandler
-	public ResponseEntity<ApiResponse> badrequest(BadException e) {
+	public ResponseEntity<ApiResponse> badrequest(Exception e) {
 		ApiResponse apiresponse = new ApiResponse();
 		apiresponse.setStatus(HttpStatus.BAD_REQUEST.value());
 

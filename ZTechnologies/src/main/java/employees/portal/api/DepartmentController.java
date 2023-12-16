@@ -1,4 +1,4 @@
-package Application;
+package employees.portal.api;
 
 import java.util.List;
 import java.util.Optional;
@@ -12,23 +12,28 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import employees.portal.Impl.DepartmentService;
+import employees.portal.model.DepartmentModel;
+import io.swagger.annotations.Api;
+
 @CrossOrigin
 @RestController
 @RequestMapping("/api/dept")
 @Transactional
-public class ZdeptController {
+@Api(description = "Handle all department details", tags = "Department")
+public class DepartmentController {
 	@Autowired
-	ZdeptService deptservice;
+	DepartmentService deptservice;
 
 	@GetMapping("/getdept")
 	@ResponseBody
-	public Optional<ZdeptModel> togetdept(@RequestParam int deptno) {
+	public Optional<DepartmentModel> togetdept(@RequestParam int deptno) {
 		return deptservice.getdept(deptno);
 	}
 
 	@GetMapping("/getalldept")
 	@ResponseBody
-	public List<ZdeptModel> togetalldept() {
+	public List<DepartmentModel> togetalldept() {
 		return deptservice.getalldept();
 	}
 
